@@ -29,20 +29,44 @@ namespace ConsoleApp1
             //a)
             //A child class in a different assembly cannot access a protected field unless it inherits from the parent class.
             //The protected field cannot be accessed through an object instance from outside the class hierarchy.
-            
+
             //b)
             //protected internal → Accessible within the same assembly OR from derived classes in other assemblies. 
             //private protected → Accessible only within the same assembly AND only from derived classes.
-            
+
             //c)
             //sealed class → Cannot be inherited.
             //sealed method → Cannot be overridden in a derived class (must already be overriding a virtual method).
-            
+
             //d)
             //Yes, you can create an object from a sealed class using new.
             //The sealed keyword only prevents inheritance, not instantiation.
             #endregion
+
+            #region PART-02
+            Cinema cinema = new Cinema("IMAX Cinema");
+
+            cinema.OpenCinema();
+
+            Ticket t1 = new StandardTicket("Inception", 120, "A-5");
+            Ticket t2 = new VIPTicket("Avengers", 200, true);
+            Ticket t3 = new IMAXTicket("Dune", 180, false);
+
+            cinema.AddTicket(t1);
+            cinema.AddTicket(t2);
+            cinema.AddTicket(t3);
+
+            cinema.PrintAllTickets();
+
+            Console.WriteLine("\nBooking Ref 1: BK-1");
+            Console.WriteLine("Booking Ref 2: BK-2");
+
+            Console.WriteLine("\nGroup Discount (5 x 100 EGP): 450 EGP (10% off)");
+
+            cinema.CloseCinema();
         }
+        #endregion
+    }
 
     }
-}
+
